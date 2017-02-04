@@ -3,7 +3,6 @@ Nats Enabler
 
 This project provides support for using Spring and Java with [NATS messaging system](https://nats.io/).
 
-[![License Apache 2.0](https://img.shields.io/github/license/mashape/apistatus.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 # Checking out and Building
 
@@ -17,7 +16,7 @@ The Java SE 7 or higher is recommended to build the project.
 
 # Resources
 
-For more information, please visit the Spring Kafka website at:
+For more information, please visit the Nats Enabler website at:
 [Reference Manual](http://dstrelec.github.io/nats/docs)
 
 
