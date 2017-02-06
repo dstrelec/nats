@@ -38,7 +38,7 @@ To check out the project and build from source, do the following:
 
 The Java SE 7 or higher is recommended to build the project.
 
-## Basic Usage
+# Basic Usage
 
 ```java
 @EnableNats
@@ -62,6 +62,7 @@ public class AppConfig {
         factory.setMessageConverter(new StringJsonMessageConverter());
         return factory;
     }
+    
 }
 ```
 ```java
@@ -71,9 +72,20 @@ public class MyComponent {
     @Autowired
     private NatsTemplate natsTemplate;
 	
-    @PostConstruct
-    public void init() {
+    public void sayHello() {
         natsTemplate.publish("foo", "\"Hello world.\"");
+    }
+    
+}
+```
+```java
+@Component
+@NatsListener(subjects = "foo")
+public class MyListener {
+    
+    @NatsHandler
+    public void receiveMessage(@Payload String greetings) {
+        System.out.println(greetings);
     }
     
 }
