@@ -17,7 +17,10 @@
 package dstrelec.nats.core;
 
 import dstrelec.nats.NatsException;
+import dstrelec.nats.support.converter.MessageConverter;
+import dstrelec.nats.support.converter.MessagingMessageConverter;
 import io.nats.client.Connection;
+import org.springframework.messaging.Message;
 
 import java.io.IOException;
 
@@ -28,7 +31,13 @@ import java.io.IOException;
  */
 public class NatsTemplate implements NatsOperations {
 
+	private static final String DEFAULT_SUBJECT = "default";
+
 	private NatsConnectionFactory connectionFactory;
+
+	private MessageConverter messageConverter = new MessagingMessageConverter();
+
+	private volatile String defaultSubject = DEFAULT_SUBJECT;
 
 	/**
 	 * Create an instance using the supplied connection factory.
@@ -38,10 +47,57 @@ public class NatsTemplate implements NatsOperations {
 		this.connectionFactory = connectionFactory;
 	}
 
+	/**
+	 * The default subject for send methods where a subject is not providing.
+	 * @return the subject.
+	 */
+	public String getDefaultSubject() {
+		return this.defaultSubject;
+	}
+
+	/**
+	 * Set the default subject for send methods where a subject is not providing.
+	 * @param defaultSubject the subject.
+	 */
+	public void setDefaultSubject(String defaultSubject) {
+		this.defaultSubject = defaultSubject;
+	}
+
+	/**
+	 * Return the message converter.
+	 * @return the message converter.
+	 */
+	public MessageConverter getMessageConverter() {
+		return this.messageConverter;
+	}
+
+	/**
+	 * Set the message converter to use.
+	 * @param messageConverter the message converter.
+	 */
+	public void setMessageConverter(MessageConverter messageConverter) {
+		this.messageConverter = messageConverter;
+	}
+
+	@Override
+	public void publish(Object data) {
+		publish(this.defaultSubject, data);
+	}
+
 	@Override
 	public void publish(String subject, Object data) {
 		try {
 			getConnection().publish(subject, data.toString().getBytes());
+		} catch (IOException e) {
+			throw new NatsException("Publish failed.", e);
+		}
+	}
+
+	@Override
+	public void publishMessage(Message<?> message) {
+		io.nats.client.Message msg = this.messageConverter.fromMessage(message, defaultSubject);
+		try {
+			getConnection().publish(msg);
 		} catch (IOException e) {
 			throw new NatsException("Publish failed.", e);
 		}

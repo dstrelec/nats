@@ -33,6 +33,7 @@
 
     <modules>
         <module>nats-enabler</module>
+        <module>nats-starter</module>
     </modules>
 
 </project>

@@ -16,6 +16,8 @@
 
 package dstrelec.nats.core;
 
+import org.springframework.messaging.Message;
+
 /**
  * The basic Nats operations contract.
  *
@@ -25,10 +27,24 @@ package dstrelec.nats.core;
 public interface NatsOperations {
 
 	/**
+	 * Publish the data to the default subject.
+	 * @param data The data.
+	 */
+	void publish(Object data);
+
+	/**
 	 * Publish the data to the provided subject.
 	 * @param subject the subject.
 	 * @param data the data.
 	 */
 	void publish(String subject, Object data);
+
+	/**
+	 * Publish a message with routing information in message headers. The message payload
+	 * may be converted before sending.
+	 * @param message the message to send.
+	 * @see dstrelec.nats.support.NatsHeaders#SUBJECT
+	 */
+	void publishMessage(Message<?> message);
 
 }

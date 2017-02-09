@@ -83,8 +83,7 @@ public class StringJsonMessageConverter extends MessagingMessageConverter {
 			} catch (IOException e) {
 				throw new ConversionException("Failed to convert from JSON", e);
 			}
-		}
-		else {
+		} else {
 			throw new IllegalStateException("Only String or byte[] supported");
 		}
 
