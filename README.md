@@ -1,7 +1,7 @@
 Nats Enabler
 ==================
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
 
 This project provides support for using Spring and Java with [NATS messaging system](https://nats.io/).
  
@@ -10,7 +10,7 @@ It also provides support for Message-driven POJOs with `@NatsListener` annotatio
 These libraries promote the use of dependency injection and declarative.
  
 The project was inspired by  [Spring Kafka](http://projects.spring.io/spring-kafka/) and 
-[Spring AMQP](http://projects.spring.io/spring-amqp/) projects, so you will see a lots of similarities
+[Spring AMQP](http://projects.spring.io/spring-amqp/), so you will see a lots of similarities
 to those Spring messaging projects.
 
 # Features
@@ -94,7 +94,7 @@ public class MyListener {
 # Resources
 
 For more information, please visit the Nats Enabler website at:
-[Reference Manual](http://dstrelec.github.io/nats/docs)
+[Reference Manual](http://dstrelec.github.io/nats)
 
 
 # License
