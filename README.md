@@ -1,4 +1,4 @@
-Nats Enabler
+Spring NATS
 ==================
 
 [![License](http://img.shields.io/:license-apache-blue.svg?style=flat-square)](http://www.apache.org/licenses/LICENSE-2.0.html)
@@ -14,17 +14,18 @@ The project was inspired by  [Spring Kafka](http://projects.spring.io/spring-kaf
 to those Spring messaging projects.
 
 # Features
+* Spring Boot auto-configuration starter
 * Listener container for asynchronous processing of inbound messages
 * NatsTemplate for sending messages
 
 # Quick Start
-The recommended way to get started using `nats-enabler` in your project is with a dependency management 
+The recommended way to get started using `nats-starter` in your project is with a dependency management 
 system – the snippet below can be copied and pasted into your build. 
 
     <dependencies>
         <dependency>
             <groupId>dstrelec.nats</groupId>
-            <artifactId>nats-enabler</artifactId>
+            <artifactId>nats-starter</artifactId>
             <version>0.1.0</version>
         </dependency>
     </dependencies>
@@ -93,7 +94,7 @@ public class MyListener {
 
 # Resources
 
-For more information, please visit the Nats Enabler website at:
+For more information, please visit the Spring NATS website at:
 [Reference Manual](http://dstrelec.github.io/nats)
 
 
